@@ -1,0 +1,152 @@
+format = """
+$os\
+$username\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$cmd_duration $time\
+$line_break\
+$character"""
+
+[os]
+disabled = false
+format = "[$symbol]($style)"
+style = "bright-red"
+symbols.Ubuntu = "  "
+
+[username]
+style_user = "blue bold"
+style_root = "red bold"
+format = "[$user ]($style)"
+disabled = false
+show_always = true
+
+[character]
+success_symbol = "[❯](blue dimmed)"
+error_symbol = "[❯](red dimmed)"
+
+[directory]
+format = "[$path]($style)($read_only)($read_only_style)"
+read_only = " 󰌾"
+truncation_length = 10
+truncate_to_repo = true # truncates directory to root folder if in github repo
+style = "inverted dimmed bright-white"
+
+[git_branch]
+format = "[ $symbol$branch]($style)"
+symbol = " "
+style = "bright-black"#0377fc"
+
+[git_status]
+format = ' ([\[$all_status$ahead_behind\]]($style))'
+style = "bright-green"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_metrics]
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+min_time = 4
+show_milliseconds = false
+disabled = false
+style = "dimmed blue"
+
+[time]
+format = "[$time]($style)"
+time_format = "%I:%M%P"
+use_12hr = true
+style = "bright-black"
+disabled = false
+
+[aws]
+symbol = "  "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+#[directory]
+#read_only = " "
+
+[docker_context]
+symbol = " "
+format = "via [$symbol$context]($style) "
+style = "blue bold"
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+disabled = false
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+#pyenv_version_name = true
+format = '[${symbol} $virtualenv]($style)'
+style = "bold green"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+#detect_extensions = ["py"]
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
+
+[nodejs]
+format = "[ Node.js $version](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
