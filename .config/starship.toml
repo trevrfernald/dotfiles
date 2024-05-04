@@ -2,9 +2,9 @@ format = """
 [](color_section1)\
 $os\
 $username\
-[](bg:color_offwhite fg:color_section1)\
+[](bg:color_green fg:color_section1)\
 $directory\
-[](fg:color_offwhite bg:color_section3)\
+[](fg:color_green bg:color_section3)\
 $git_branch\
 $git_status\
 [](fg:color_section3 bg:color_section4)\
@@ -18,7 +18,7 @@ palette = 'onedark_warm'
 
 [palettes.onedark_warm]
 color_fg = '#191a1c'
-color_section1 = '#b1b4b9' 
+color_section1 = '#3e4452' 
 color_offwhite = '#d7dee0' 
 color_section3 = '#646568' 
 color_section4 = '#404247'
@@ -28,7 +28,7 @@ color_red = '#e16d77'
 color_yellow = '#dfbe81'
 color_blue = '#68aee8'
 color_cyan = '#5fafb9'
-color_green = '#99bc80'
+color_green = '#98c379'
 
 [os]
 disabled = false
@@ -48,7 +48,7 @@ style_root = "bg:color_section1 fg:color_red"
 format = '[ t ]($style)'
 
 [directory]
-style = "fg:color_fg bg:color_offwhite"
+style = "fg:color_fg bg:color_green"
 format = "[ $path ]($style)"
 truncation_length = 3
 #truncation_symbol = "…/"

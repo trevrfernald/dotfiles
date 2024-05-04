@@ -43,10 +43,10 @@ eval "$(starship init zsh)"
 # Load - should be the last thing in config
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     neofetch
-    source /usr/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-    source /usr/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+    # source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
     source /usr/share/autojump/autojump.zsh 2>/dev/null
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-    source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
