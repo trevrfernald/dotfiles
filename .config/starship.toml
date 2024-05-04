@@ -1,152 +1,91 @@
 format = """
+[](color_section1)\
 $os\
 $username\
+[](bg:color_offwhite fg:color_section1)\
 $directory\
+[](fg:color_offwhite bg:color_section3)\
 $git_branch\
-$git_state\
 $git_status\
-$git_metrics\
+[](fg:color_section3 bg:color_section4)\
+$time\
+[ ](fg:color_section4)\
 $fill\
-$cmd_duration $time\
-$line_break\
-$character"""
+$cmd_duration\
+$line_break$character"""
+
+palette = 'onedark_warm'
+
+[palettes.onedark_warm]
+color_fg = '#191a1c'
+color_section1 = '#b1b4b9' 
+color_offwhite = '#d7dee0' 
+color_section3 = '#646568' 
+color_section4 = '#404247'
+color_orange = '#c99a6e'
+color_purple = '#c27fd7'
+color_red = '#e16d77'
+color_yellow = '#dfbe81'
+color_blue = '#68aee8'
+color_cyan = '#5fafb9'
+color_green = '#99bc80'
 
 [os]
 disabled = false
-format = "[$symbol]($style)"
-style = "bright-red"
-symbols.Ubuntu = "  "
+style = "bg:color_section1 fg:color_fg"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+Macos = "󰀵"
+Linux = "󰌽"
+Arch = "󰣇"
 
 [username]
-style_user = "blue bold"
-style_root = "red bold"
-format = "[$user ]($style)"
-disabled = false
 show_always = true
-
-[character]
-success_symbol = "[❯](blue dimmed)"
-error_symbol = "[❯](red dimmed)"
+style_user = "bg:color_section1 fg:color_fg"
+style_root = "bg:color_section1 fg:color_red"
+format = '[ t ]($style)'
 
 [directory]
-format = "[$path]($style)($read_only)($read_only_style)"
-read_only = " 󰌾"
-truncation_length = 10
-truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "inverted dimmed bright-white"
+style = "fg:color_fg bg:color_offwhite"
+format = "[ $path ]($style)"
+truncation_length = 3
+#truncation_symbol = "…/"
 
 [git_branch]
-format = "[ $symbol$branch]($style)"
-symbol = " "
-style = "bright-black"#0377fc"
+symbol = ""
+style = "bg:color_section3 fg:color_offwhite"
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
-format = ' ([\[$all_status$ahead_behind\]]($style))'
-style = "bright-green"
+style = "bg:color_section3 fg:color_offwhite"
+format = '[($all_status$ahead_behind )]($style)'
 
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[git_metrics]
+[time]
 disabled = false
+time_format = "%I:%M%P"
+style = "bg:color_section4"
+format = '[[  $time ](fg:color_fg bg:color_section4)]($style)'
+
+[fill]
+symbol = " "
 
 [cmd_duration]
 format = "[$duration]($style)"
 min_time = 4
 show_milliseconds = false
 disabled = false
-style = "dimmed blue"
+style = "white"
 
-[time]
-format = "[$time]($style)"
-time_format = "%I:%M%P"
-use_12hr = true
-style = "bright-black"
+[line_break]
 disabled = false
 
-[aws]
-symbol = "  "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-#[directory]
-#read_only = " "
-
-[docker_context]
-symbol = " "
-format = "via [$symbol$context]($style) "
-style = "blue bold"
-only_with_files = true
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
-detect_folders = []
+[character]
 disabled = false
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[memory_usage]
-symbol = " "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[python]
-symbol = " "
-#pyenv_version_name = true
-format = '[${symbol} $virtualenv]($style)'
-style = "bold green"
-pyenv_prefix = "venv "
-python_binary = ["./venv/bin/python", "python", "python3", "python2"]
-#detect_extensions = ["py"]
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[shlvl]
-symbol = " "
-
-[swift]
-symbol = "ﯣ "
-
-[nodejs]
-format = "[ Node.js $version](bold green) "
-detect_files = ["package.json", ".node-version"]
-detect_folders = ["node_modules"]
+success_symbol = '[❯](bold fg:color_offwhite)'
+error_symbol = '[❯](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_offwhite)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'

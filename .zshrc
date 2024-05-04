@@ -6,8 +6,8 @@
 autoload -U colors && colors
 
 # Custom Variables
-EDITOR="vim"
-VISUAL="vim"
+EDITOR="nvim"
+VISUAL="nvim"
 
 # History:
 HISTSIZE=5000
@@ -21,9 +21,12 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
+    source /usr/share/doc/fzf/examples/completion.zsh
+fi
 
 # vi mode
 bindkey -v
@@ -31,14 +34,19 @@ bindkey -v
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/zsh/aliasrc" ] && source "$HOME/zsh/aliasrc"
 
-eval "$(starship init zsh)"
-neofetch
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+eval "$(starship init zsh)"
+
 # Load - should be the last thing in config
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /usr/share/autojump/autojump.zsh 2>/dev/null
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    neofetch
+    source /usr/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+    source /usr/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+    source /usr/share/autojump/autojump.zsh 2>/dev/null
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
