@@ -1,4 +1,69 @@
-#
+export EDITOR=nvim
+alias v="nvim"
+
+# use "cfg" with regular git commands to track dotfiles, i.e., cfg add .zshrc
+# full setup info - https://www.atlassian.com/git/tutorials/dotfiles
+alias cfg="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+
+# shortcuts
+alias zshrc="${=EDITOR} ~/.zshrc"
+alias zsha="${=EDITOR} ~/zsh/aliasrc"
+alias sb="cd ~/Dropbox/sync/obsidian" 
+alias nvc="cd ~/.config/nvim"
+
+# conveniences for common commands
+alias grep="grep --color=auto"
+alias t="tail -f"
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias la="ls -la"
+alias cls="clear"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias mkdir="mkdir -pv"  # auto create parent dirs
+
+# safety nets
+alias rm="rm --preserve-root" 
+alias chown="chown --preserve-root"
+alias chmod="chmod --preserve-root"
+alias chgrp="chgrp --preserve-root"
+
+# nicer git commands
+alias gl="git log"
+alias glo="git log --oneline"
+alias gs="git status"
+alias gcm="git checkout main"
+alias gp="git push"
+
+# gitpush() {
+#     git add .
+#     git commit -m "$*"
+#     git pull
+#     git push
+# }
+
+# set colors for tmux
+alias tmux="TERM=screen-256color-bce tmux"
+
+# useful only for Mac OS Silicon M1, 
+# still working but useless for the other platforms
+docker() {
+ if [[ `uname -m` == "arm64" ]] && [[ "$1" == "run" || "$1" == "build" ]]; then
+    /usr/local/bin/docker "$1" --platform linux/amd64 "${@:2}"
+  else
+     /usr/local/bin/docker "$@"
+  fi
+}
+
+# set a variable without recording in history
+set_var() {
+  echo "variable name: "
+  read VAR_NAME
+  read -s "?variable value: " $VAR_NAME
+  export $VAR_NAME
+}
+
 # # ex - archive extractor
 # # usage: ex <file>
 ex ()
@@ -22,58 +87,4 @@ ex ()
   else
     echo "'$1' is not a valid file"
   fi
-}
-
-export EDITOR=nvim
-alias v='nvim'
-
-# use 'cfg' with regular git commands to track dotfiles, i.e., cfg add .zshrc
-# full setup info - https://www.atlassian.com/git/tutorials/dotfiles
-alias cfg='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -la'
-
-alias zshrc='${=EDITOR} ~/.zshrc' # Quick access to the ~/.zshrc file
-
-alias grep='grep --color'
-
-alias t='tail -f'
-
-alias cls="clear"
-alias cd2="cd ../.."
-alias cd3="cd ../../.."
-
-alias gl="git log"
-alias glo="git log --oneline"
-alias gs="git status"
-alias gcm="git checkout main"
-alias gp="git push"
-
-# set colors for tmux
-alias tmux="TERM=screen-256color-bce tmux"
-
-# gitpush() {
-#     git add .
-#     git commit -m "$*"
-#     git pull
-#     git push
-# }
-
-# useful only for Mac OS Silicon M1, 
-# still working but useless for the other platforms
-docker() {
- if [[ `uname -m` == "arm64" ]] && [[ "$1" == "run" || "$1" == "build" ]]; then
-    /usr/local/bin/docker "$1" --platform linux/amd64 "${@:2}"
-  else
-     /usr/local/bin/docker "$@"
-  fi
-}
-
-set_var() {
-  echo "variable name: "
-  read VAR_NAME
-  read -s "?variable value: " $VAR_NAME
-  export $VAR_NAME
 }
