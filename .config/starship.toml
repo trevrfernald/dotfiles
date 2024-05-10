@@ -51,6 +51,7 @@ format = '[ t ]($style)'
 style = "fg:color_fg bg:color_green"
 format = "[ $path ]($style)"
 truncation_length = 3
+truncate_to_repo = true
 #truncation_symbol = "…/"
 
 [git_branch]
