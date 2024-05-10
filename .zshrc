@@ -41,12 +41,13 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)"
 
 # Load - should be the last thing in config
+# zsh-autocomplete is not what we want and highlighting is annoying
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     neofetch
     source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
     # source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
     source /usr/share/autojump/autojump.zsh 2>/dev/null
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-    # source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+    # source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 fi

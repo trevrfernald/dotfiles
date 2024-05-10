@@ -23,12 +23,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias mkdir="mkdir -pv"  # auto create parent dirs
 
-# safety nets
-alias rm="rm --preserve-root" 
-alias chown="chown --preserve-root"
-alias chmod="chmod --preserve-root"
-alias chgrp="chgrp --preserve-root"
-
 # nicer git commands
 alias gl="git log"
 alias glo="git log --oneline"
