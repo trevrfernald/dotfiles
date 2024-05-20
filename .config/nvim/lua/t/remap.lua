@@ -22,5 +22,17 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- pre-populated search
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+local diagnostics_active = true
+local toggle_diagnostics = function()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.show()
+  else
+    vim.diagnostic.hide()
+  end
+end
+
+vim.keymap.set('n', '<leader>d', toggle_diagnostics)
+
 -- there are a few more primeagen remaps that I don't feel like I need right now
 

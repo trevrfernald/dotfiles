@@ -9,15 +9,29 @@ autoload -U colors && colors
 EDITOR="nvim"
 VISUAL="nvim"
 
+# Keybindings
+bindkey -v
+bindkey '^n' history-search-forward  # only search matches for autosuggestions
+bindkey '^p' history-search-backward  # only search matches for autosuggestions
+
 # History:
 HISTSIZE=5000
-SAVEHIST=5000
+SAVEHIST=$HISTSIZE
 HISTFILE=~/.zsh_history
+HISTDUP=erase
 setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space  # don't record if command starts with a space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zsytle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive autosuggestions
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include hidden files.
@@ -27,9 +41,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     source /usr/share/doc/fzf/examples/key-bindings.zsh
     source /usr/share/doc/fzf/examples/completion.zsh
 fi
-
-# vi mode
-bindkey -v
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/zsh/aliasrc" ] && source "$HOME/zsh/aliasrc"

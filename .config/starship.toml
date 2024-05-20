@@ -12,7 +12,7 @@ $time\
 [ ](fg:color_section4)\
 $fill\
 $cmd_duration\
-$line_break$character"""
+$line_break$python$character"""
 
 palette = 'onedark_warm'
 
@@ -89,3 +89,7 @@ vimcmd_symbol = '[](bold fg:color_offwhite)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[python]
+format = '[${virtualenv} ]($style)'
+style = 'blue'
