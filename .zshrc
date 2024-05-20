@@ -30,7 +30,7 @@ setopt hist_find_no_dups
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
-zsytle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive autosuggestions
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive autosuggestions
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zmodload zsh/complist
 compinit
