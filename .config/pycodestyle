@@ -1,4 +1,4 @@
-# https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+# https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
 [pycodestyle]
 # 501: linelength;
 ignore = E501
