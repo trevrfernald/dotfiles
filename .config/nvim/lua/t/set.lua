@@ -6,11 +6,18 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- recommendation is to not set these and use filetype indentation instead
+vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+-- ignorecase w/ smartcase uses case-sensitivity for searches if uppercase is included in search
+-- ignores case if only lowercase
+-- ignorecase also affects substitutions, so turn off with :set noignorecase as needed
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 

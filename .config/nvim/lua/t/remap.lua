@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- old keymap fo netrw
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- old keymap for netrw
 
 -- move highlighted lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
