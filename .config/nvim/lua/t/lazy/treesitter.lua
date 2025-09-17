@@ -11,6 +11,7 @@ return {
 				"python",
 				"json",
 				"terraform",
+                "hcl",
 				"yaml",
 				"bash",
 				"javascript",

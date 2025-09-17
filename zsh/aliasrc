@@ -30,6 +30,8 @@ alias gs="git status"
 alias gcm="git checkout main"
 alias gp="git push"
 
+alias fq_auth="$HOME/data/fq-aws-cli/fq_aws/cli.py floqast_sso sso-sign-on"
+
 # gitpush() {
 #     git add .
 #     git commit -m "$*"

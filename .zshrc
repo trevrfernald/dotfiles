@@ -37,6 +37,10 @@ compinit
 _comp_options+=(globdots) # Include hidden files.
 if [[ "$OSTYPE" == "darwin"* ]]; then
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    export GOPATH=$HOME/go
+    export GOROOT="$(brew --prefix golang)/libexec"
+    export PATH=$PATH:$GOPATH/bin
+    export PATH=$PATH:$GOROOT/bin
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     source /usr/share/doc/fzf/examples/key-bindings.zsh
     source /usr/share/doc/fzf/examples/completion.zsh
@@ -61,4 +65,17 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
     # source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+fi
+
+export RUN_ENV="local"
+export FQ_ENV=fq1
+export AWS_PROFILE=fq1
+export AWS_REGION=us-west-2
+export NODE_ENV="development"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
 fi
